@@ -1,4 +1,4 @@
-# Final-Capstone-Project-Dymamic-Pricing-AIRBNB
+# Final-Capstone-Project-Dynamic-Pricing-AIRBNB
 Sentiment Analysis of Airbnb Reviews to Inform Dynamic Pricing for Listings in Paris
 
 # Problem Statement
