@@ -1,21 +1,50 @@
-# Final-Capstone-Project-Dynamic-Pricing-AIRBNB
-Sentiment Analysis of Airbnb Reviews to Inform Dynamic Pricing for Listings in Boston
+Dynamic Pricing for Airbnb Listings in Boston using Sentiment Analysis (BERT)
 
-# Problem Statement
-Airbnb hosts in Boston struggle to attract guests due to poor pricing, limited visibility, and listings that don't highlight local attractions or unique features. Without proper data analytics, many set prices that are either too high, driving away bookings, or too low, hurting profitability. This limits Airbnb’s growth and undermines local economic benefits while missing opportunities to promote Boston cultural heritage. Unlike hotels that rely on brand recognition, Airbnb guests depend on user reviews and listing details to gauge value, often willing to pay more for well-rated properties. However, hosts don’t have clear guidance on which features, like location, amenities, or host responsiveness, affect guest satisfaction and pricing. 
-Boston. By analyzing reviews, proximity to attractions, seasonal demand, and host service quality, we will extract key insights. Natural language processing (NLP) will help identify what guests value, their expectations, and improvement areas. This will enable hosts to set competitive prices that balance occupancy and profitability. - Improve listing quality based on guest preferences. Increase visibility by showcasing unique features and local attractions.
-
-# Source for the data 
+**1. Project Overview**
+Airbnb hosts in Boston often struggle with setting the right price for their listings. Improper pricing strategies, poor visibility, and a lack of insight into guest preferences lead to low occupancy rates and missed revenue opportunities. This project uses Natural Language Processing and machine learning to:
+1)	Analyze guest reviews to extract sentiment and key factors influencing satisfaction.
+2)	Understand how listing features and sentiment impact pricing.
+3)	Build a dynamic pricing model to suggest optimal prices for Airbnb hosts.
+4)	Provide data-driven recommendations for improving listing quality and visibility.
+**2. Problem Statement**
+Unlike hotels that benefit from brand loyalty and standardized pricing, Airbnb guests primarily base their booking decisions on user reviews, host behavior, and listing descriptions or features. However, many hosts lack clear insights into the specific factors that guests value most, leading to pricing decisions that are either too high, resulting in vacant bookings or too low, which reduces profitability. Additionally, listings often fail to highlight unique amenities or nearby local attractions that could enhance guest appeal, and there is currently no systematic approach to pricing that integrates guest sentiment, proximity to attractions, or real-time demand trends.
+**3. Objectives**
+While key features such as amenities, host responsiveness, and location influence guest satisfaction and dictate the dynamic pricing, the primary objectives of this project include:
+1)	Extract and analyze guest sentiments from Airbnb reviews using Natural Language Processing (NLP) with BERT to classify reviews as positive, neutral, or negative.
+2)	Develop a dynamic pricing model that integrates sentiment scores, listing features, geographical location, and demand trends.
+3)	Generate predictive insights to recommend optimal pricing strategies that maximize both occupancy and profitability.
+**4. Data Sources**
+Data is sourced from reputable short-term rental datasets InsiderAirbnb.
+There are two datasets
+a)	Listing
+b)	Customer reviewers
 To address this issue, I will collect a dataset from an insider website which provides datasets or short-stay rentals across major cities, which offers hosts to list their short-stay rental houses and also allows customers to leave reviews and ratings. The following are characteristics of the data: 
-     i) Listing Details: Title, property type (e.g., apartment, house), number of bedrooms/bathrooms, amenities (e.g., Wi-Fi, pool)
-     ii) Pricing: Nightly rate, discounts, service fees
-     iii) Location: County, city, or specific coordinates
-     iv) Reviews: Ratings, number of reviews, guest comments
-     v) Host Information: Name, response rate, superhost status
-     vi) Availability: Booked/unbooked dates.
+a)	Listing Details: Title, property type (e.g., apartment, house), number of bedrooms/bathrooms, amenities (e.g., Wi-Fi, pool)
+b)	Pricing: Nightly rate, discounts, service fees
+c)	Location: County, city, or specific coordinates
+d)	Reviews: Ratings, number of reviews, guest comments
+e)	Host Information: Name, response rate, superhost status
+f)	Availability: Booked/unbooked dates.
 
-# Methodology
-I will pre-process the raw Airbnb review data by removing noise (e.g., punctuation, emojis, etc) and standardizing the text through lowercasing and spell-checking. Using natural language processing (NLP) with tools like NLTK or spaCy, I will tokenize the reviews, remove stopwords, and apply lemmatization to normalize words.
-Next, I will extract numerical features from the listings (e.g., price, number of bedrooms) and encode categorical variables (e.g., property type) using one-hot encoding. For sentiment analysis, I will employ BERT to classify reviews as positive, negative, or neutral, assigning sentiment scores ranging from -1 to +1, which will be aggregated per listing to inform pricing analysis. I will then build a regression-based pricing model using ensemble techniques like Random Forest or XGBoost, incorporating sentiment scores along with predictors such as location, demand trends, and competitor prices. To optimize the model, I will tune hyperparameters (e.g., tree depth, learning rate) and validate performance with cross-validation. I will also analyze feature importance to pinpoint key pricing influencers.
-To evaluate the model’s effectiveness, I will use metrics like Mean Squared Error (MSE) and R-squared (R²) to ensure accurate price predictions. For interpretability, I will leverage SHAP values to illustrate how sentiment and other features affect pricing decisions. Finally, I will deploy the model as a scalable pricing tool, integrating it with Airbnb host dashboards to enable real-time price adjustments.
-Data-driven recommendations will help hosts enhance guest experiences, increase revenue, and boost Airbnb’s presence in Paris. This approach will also promote the city’s culture and tourism to a global audience, driving local economic growth.
+
+Reviews	Guest comments, ratings, number of reviews
+
+**5. Methodology**
+5.1 Data Preprocessing
+•	Remove null values, duplicates, and irrelevant rows.
+•	Convert text to lowercase, remove punctuation, special characters, and emojis.
+•	Tokenization, stopword removal, and lemmatization using NLTK/spaCy.
+•	Encode categorical data (One-Hot Encoding).
+•	Standardize numerical features (price, number of bedrooms, etc.).
+5.2 Sentiment Analysis
+•	Pre-trained BERT model to classify reviews:
+o	Negative (-1), Neutral (0), Positive (+1)
+o	Come up with compound score
+•	Compute average sentiment score per listing.
+•	Extract keywords using TF-IDF or topic modelling (LDA).
+5.3 Machine Learning Model
+•	Combine numerical + encoded categorical + sentiment features.
+•	Train regression models:
+o	Random Forest Regressor
+o	XGBoost
+o	Gradient Boosting
